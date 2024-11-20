@@ -1,0 +1,68 @@
+﻿@page "/0606ArrayMinMax"
+
+<PageTitle>Minimum and Maximum</PageTitle>
+<h1>Minimum and Maximum</h1>
+<p>
+You can try to enter integers, real numbers and texts that are not numbers at all.
+</p>
+<table>
+    @for(i = 0; i<n; i++){
+    <tr>
+        <td>Argument @i:</td>
+        <td><input style="text-align:right" @bind="elements[i]"/></td>
+    </tr>
+    }
+    <tr>
+        <td style="text-align:center" colspan="2">
+            <button @onclick="Minimum">Determine Minimum</button> &nbsp; 
+            <button @onclick="Maximum">Determine Maximum</button> &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>Result:</td>
+        <td><input style="text-align:right" @bind="result"/></td>
+    </tr>
+</table>
+<br/>
+@code {
+
+    private int n = 8;
+
+    private int i;
+
+    private double[] elements = {-1.5, 1.5, 2, 0.7, 5, 6, 7, 8, 9, 10 };
+
+    private double result;
+
+    private double Min(double[] arr)
+    {
+        double res = arr[0];
+        foreach(double x in arr)
+        {
+            if (x < res)
+                res = x;
+        }
+        return res;
+    }
+
+    private double Max(double[] arr)
+    {
+        double res = arr[0];
+        foreach (double x in arr)
+        {
+            if (x > res)
+                res = x;
+        }
+        return res;
+    }
+
+    private void Minimum()
+    {
+        result = Min(elements);
+    }
+
+    private void Maximum()
+    {
+        result = Max(elements);
+    }
+}
