@@ -1,0 +1,90 @@
+﻿@page "/actors-show"
+
+@using DSS.Models;
+
+<PageTitle>Actors</PageTitle>
+<h1>Actors</h1>
+<br />
+<table border =1 >
+    <tr>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>IMDB score</td>
+    </tr>
+    @for(int i=0; i<filmCrew.Length; i++)
+    {
+        <tr>
+            <td>@filmCrew[i].FirstName</td>
+            <td>@filmCrew[i].LastName</td>
+            <td>@filmCrew[i].ImdbMark</td>
+        </tr>
+    }
+    @foreach(Actor act in filmCrew)
+    {
+        <tr>
+            <td>@act.FirstName</td>
+            <td>@act.LastName</td>
+            <td>@act.ImdbMark</td>
+        </tr>
+    }
+</table>
+<br />
+<button @onclick="AverageIMDB">Average IMDB</button>
+<br />
+@if (showResult)
+{
+    <p> Average IMDB is: @avgIMDB </p>
+}
+@code {
+    private bool showResult = false;
+
+    private double avgIMDB;
+
+    private Actor movieStar1 = new Actor()
+        {
+            FirstName = "John",
+            LastName = "Goodman",
+            ImdbMark = 9.7
+        };
+
+    private Actor movieStar2 = new Actor()
+        {
+            LastName = "De Niro",
+            ImdbMark = 9.4,
+            FirstName = "Robert"
+        };
+
+
+    private Actor theBadGuy = new Actor()
+        {
+            LastName = "Spacey",
+            ImdbMark = 9.6,
+            FirstName = "Kevin"
+        };
+
+    private Actor bataLegenda = new Actor()
+        {
+            LastName = "Живојиновић",
+            ImdbMark = 10,
+            FirstName = "Велимир - Бата"
+        };
+
+    private Actor[] filmCrew = new Actor[4];
+
+    protected override async Task OnInitializedAsync()
+    {
+        filmCrew[0] = bataLegenda;
+        filmCrew[1] = movieStar1;
+        filmCrew[2] = movieStar2;
+        filmCrew[3] = theBadGuy;
+    }
+
+    private void AverageIMDB()
+    {
+        showResult = true;
+        double sum = 0;
+        foreach (Actor a in filmCrew)
+            sum += a.ImdbMark;
+        avgIMDB = sum / filmCrew.Length;
+    }
+}

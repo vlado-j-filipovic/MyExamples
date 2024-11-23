@@ -91,11 +91,15 @@
     private void ToggleSubmenuBasicTasks()
     {
         expandSubMenuBasicTasks = !expandSubMenuBasicTasks;
+        if(expandSubMenuBasicTasks)
+            expandSubMenuBranchingLooping = false;
     }
 
     private void ToggleSubmenuBranchingLooping()
     {
         expandSubMenuBranchingLooping = !expandSubMenuBranchingLooping;
+        if(expandSubMenuBranchingLooping)
+            expandSubMenuBasicTasks = false;
     }
 
     
