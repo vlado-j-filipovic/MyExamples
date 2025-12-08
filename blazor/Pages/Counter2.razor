@@ -1,0 +1,27 @@
+﻿@page "/counter2"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<p><input type="number" class="form-control" @bind="incDecAmount"/></p>
+
+<button class="btn btn-info" @onclick="IncrementCount">Increment</button>
+<button class="btn btn-danger" @onclick="DecrementCount">Decrement</button>
+
+@code {
+    private int currentCount = 42;
+    private int incDecAmount = 2;
+
+    private void IncrementCount()
+    {
+        currentCount = currentCount + incDecAmount;
+    }
+
+    private void DecrementCount()
+    {
+        currentCount = currentCount - incDecAmount;
+    }
+}
