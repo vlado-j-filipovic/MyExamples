@@ -8,7 +8,7 @@
         <input type="number" class="form-control" @bind="n"/>
     </div>
     <div class="col">
-        <button class="btn btn-primary" @onclick="FactorielW">Factoriel</button>
+        <button class="btn btn-primary" @onclick="FactorielWhile">Factoriel</button>
     </div>
     <div class="col">
         Result: 
@@ -22,7 +22,7 @@
         <input type="number" class="form-control" @bind="n2"/>
     </div>
     <div class="col">
-        <button class="btn btn-warning" @onclick="FactorielWD">Factoriel</button>
+        <button class="btn btn-warning" @onclick="FactorielWhileDown">Factoriel</button>
     </div>
     <div class="col">
         Result: 
@@ -36,7 +36,7 @@
         <input type="number" class="form-control" @bind="n3"/>
     </div>
     <div class="col">
-        <button class="btn btn-danger" @onclick="FactorielD">Factoriel</button>
+        <button class="btn btn-danger" @onclick="FactorielDoWhile">Factoriel</button>
     </div>
     <div class="col">
         Result: 
@@ -50,7 +50,7 @@
         <input type="number" class="form-control" @bind="n4"/>
     </div>
     <div class="col">
-        <button class="btn btn-info" @onclick="FactorielDD">Factoriel</button>
+        <button class="btn btn-info" @onclick="FactorielDoWhileDown">Factoriel</button>
     </div>
     <div class="col">
         Result: 
@@ -64,7 +64,7 @@
         <input type="number" class="form-control" @bind="n5"/>
     </div>
     <div class="col">
-        <button class="btn btn-secondary" @onclick="FactorielF">Factoriel</button>
+        <button class="btn btn-secondary" @onclick="FactorielFor">Factoriel</button>
     </div>
     <div class="col">
         Result: 
@@ -73,13 +73,27 @@
         <b> @result5 </b>
     </div>
 </div>
+<div class="row my-1">
+    <div class="col">
+        <input type="number" class="form-control" @bind="n6"/>
+    </div>
+    <div class="col">
+        <button class="btn btn-success" @onclick="FactorielForDown">Factoriel</button>
+    </div>
+    <div class="col">
+        Result: 
+   </div>
+    <div class="col">
+        <b> @result6 </b>
+    </div>
+</div>
 
 @code
 {
     uint n = 1;
     ulong result = 1;
 
-    void FactorielW()
+    void FactorielWhile()
     {
         result = 1;
         uint counter = 1;    
@@ -101,7 +115,7 @@
     uint n2 = 1;
     ulong result2 = 1;
 
-    void FactorielWD()
+    void FactorielWhileDown()
     {
         result2 = 1;
         uint counter = n2;    
@@ -115,7 +129,7 @@
     uint n3 = 1;
     ulong result3 = 1;
 
-    void FactorielD()
+    void FactorielDoWhile()
     {
         result3 = 1;
         uint counter = 1;
@@ -129,7 +143,7 @@
     uint n4 = 1;
     ulong result4 = 1;
 
-    void FactorielDD()
+    void FactorielDoWhileDown()
     {
         result4 = 1;
         uint counter = n4;
@@ -143,13 +157,25 @@
     uint n5 = 1;
     ulong result5 = 1;
 
-    void FactorielF()
+    void FactorielFor()
     {
         result5 = 1;
         for(uint counter = 1; counter <= n5 ; counter++)
         {
             result5 *= counter;
             //Console.Write(counter + " " + result5 + "|");
+        }
+    }
+
+    uint n6 = 1;
+    ulong result6 = 1;
+
+    void FactorielForDown()
+    {
+        result6 = 1;
+        for(uint counter = n6; counter >= 1 ; counter--)
+        {
+            result6 *= counter;
         }
     }
 
